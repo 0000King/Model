@@ -9,7 +9,7 @@ from langchain_core.messages import SystemMessage, HumanMessage, AIMessage
 from initialize import *  # Assumes this sets up `documents`, `embeddings`, `llm`, etc.
 
 app = Flask(__name__)
-CORS(app, supports_credentials=True, origins=["https://model-m46u.onrender.com"])
+CORS(app, supports_credentials=True, origins=["https://model-m46u.onrender.com/trackofield_model"])
 
 @app.route("/trackofield_model", methods=["POST"])
 def trackofield_model():
