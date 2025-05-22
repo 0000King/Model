@@ -13,9 +13,8 @@ CORS(app, supports_credentials=True, origins=["https://model-m46u.onrender.com"]
 
 @app.route("/trackofield_model", methods=["POST"])
 def trackofield_model():
-    # data = request.get_json()
-    # query = data.get("query")
-    query="hello there"
+    data = request.get_json()
+    query = data.get("query")
     # Initialize Chroma DB
     db = Chroma.from_documents(documents, embedding=embeddings, persist_directory=persistent_directory)
     retriever = db.as_retriever(search_kwargs={'k': 200})
