@@ -11,7 +11,7 @@ from initialize import *  # Assumes this sets up `documents`, `embeddings`, `llm
 app = Flask(__name__)
 CORS(app, supports_credentials=True, origins=["https://model-m46u.onrender.com"])
 
-@app.route("/process", methods=["POST"])
+@app.route("/trackofield_model", methods=["POST"])
 def trackofield_model():
     # data = request.get_json()
     # query = data.get("query")
