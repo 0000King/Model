@@ -6,6 +6,7 @@ chromadb
 openai
 tiktoken
 langchain_google_genai
+openpyxl
 
 # Optional but common for env setup
 python-dotenv
