@@ -11,7 +11,11 @@ from initialize import *  # Assumes this sets up `documents`, `embeddings`, `llm
 app = Flask(__name__)
 CORS(app, supports_credentials=True)
 
-def trackofield_model(query):
+@app.route("/process", methods=["POST"])
+def trackofield_model():
+    # data = request.get_json()
+    # query = data.get("query")
+    query="hello there"
     # Initialize Chroma DB
     db = Chroma.from_documents(documents, embedding=embeddings, persist_directory=persistent_directory)
     retriever = db.as_retriever(search_kwargs={'k': 200})
@@ -36,22 +40,12 @@ def trackofield_model(query):
     ]
     
     result = llm.invoke(messages)
-    return result.content
+    print(result.content)
+    return jsonify(result.content)
 
-@app.route("/ask", methods=["POST"])
-def ask():
-    try:
-        data = request.get_json()
-        query = data.get("query")
-
-        if not query:
-            return jsonify({"error": "No query provided"}), 400
-
-        answer = trackofield_model(query)
-        return jsonify({"answer": answer})
-
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
+@app.route("/home", methods=["GET"])
+def home():
+    return "Hello"
 
 if __name__ == "__main__":
     app.run(debug=True)
