@@ -5,6 +5,7 @@ langchain-community
 chromadb
 openai
 tiktoken
+langchain_google_genai
 
 # Optional but common for env setup
 python-dotenv
