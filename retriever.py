@@ -5,6 +5,11 @@ from langchain.chains import RetrievalQA
 from langchain.docstore.document import Document
 from langchain_core.messages import SystemMessage, HumanMessage , AIMessage
 from initialize import *
+from flask_cors import CORS
+from flask import Flask
+
+app = Flask(__name__)
+CORS(app, supports_credentials=True)
 
 def trackofield_model(query):
     #Final Question Answering
